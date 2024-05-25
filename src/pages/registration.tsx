@@ -1,8 +1,10 @@
+import useLoginUser from "@/hooks/useLoginUser";
+import useRegisterUser from "@/hooks/useRegisterUser";
+import { RegisterUserInput } from "@/types";
+import { useRouter } from "next/router";
 import { useState } from "react";
-import { Controller, Form, useForm } from "react-hook-form";
-import { RegisterUserInput } from "../types";
-import useLoginUser from "../hooks/useLoginUser";
-import useRegisterUser from "../hooks/useRegisterUser";
+import { Controller, useForm } from "react-hook-form";
+
 
 
 const AuthForm: React.FC = () => {
