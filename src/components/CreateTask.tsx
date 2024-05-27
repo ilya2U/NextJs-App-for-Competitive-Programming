@@ -73,7 +73,7 @@ function CreateTask() {
     <Button
         
         onClick={() => setIsModalOpen(true)}
-        className="px-4 py-2 bg-teal-600 text-white rounded hover:bg-white hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-teal-500 flex justify-center items-center"
+        className="px-4 py-2 bg-teal-600 text-white rounded-xl hover:bg-white hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-teal-500 flex justify-center items-center"
     >
         Создать задачу
     </Button>

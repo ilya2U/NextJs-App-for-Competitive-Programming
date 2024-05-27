@@ -29,9 +29,11 @@ const UserCard = () => {
             <Image src={data.avatar} alt="User Avatar" style={{ width: 80, height: 80, borderRadius: '50%' }} />
         )}
             <div className='p-2 rounded'>
-                <span className="border bg-teal-600 text-white rounded  p-2">
-                    {data.username}
-                </span>
+            <span className="border bg-teal-600 text-white rounded-xl p-2">
+                {data.username}
+                <span className="ml-4">Победных поинтов: {data.points}</span>
+            </span>
+
             </div>
         </div>
     

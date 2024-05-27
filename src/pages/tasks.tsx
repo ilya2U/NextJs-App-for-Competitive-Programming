@@ -1,6 +1,8 @@
 // TaskView.tsx
 import CreateTask from "@/components/CreateTask";
 import LogOut from "@/components/LogOut";
+import NameRes from "@/components/NameRes";
+import RecordButton from "@/components/RecordButton";
 import TaskList from "@/components/TaskList";
 import UserCard from "@/components/UserCard";
 import useAuth from "@/hooks/useAuth";
@@ -11,7 +13,9 @@ const TaskView = () => {
         <main className="flex flex-col h-screen p-4">
             <div className="flex justify-between items-center mb-4">
                 <UserCard />
+                <NameRes/>
                 <div className="flex space-x-4">
+                    <RecordButton/>
                     <CreateTask />
                     <LogOut />
                 </div>

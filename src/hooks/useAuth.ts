@@ -12,16 +12,12 @@ const useAuth = () => {
         // Получить токен доступа из локального хранилища
         const token = localStorage.getItem('access_token');
         setAccessToken(token);
-
-        // Если токен отсутствует, редирект на страницу регистрации
         if (!token) {
             router.push('/');
         }
     }, [router]);
 
 
-
-    // Вернуть текущий токен доступа и функцию выхода
     return {
         accessToken
     };
