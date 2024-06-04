@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 import { useRouter } from 'next/router';
 import api from './api/axi';
 import CodeEditorWithValidation from '@/components/CodeEditor';
@@ -67,10 +67,10 @@ const Competition: React.FC = () => {
                 }
             };
 
-            socket.onclose = () => {
-                console.log('WebSocket соединение закрыто');
-                setWs(null);
-            };
+            // socket.onclose = () => {
+            //     console.log('WebSocket соединение закрыто');
+            //     setWs(null);
+            // };
 
             return () => {
                 if (socket) {
@@ -80,10 +80,13 @@ const Competition: React.FC = () => {
         }
     }, [taskUuid]);
 
+
+
     const handleLogout = () => {
         router.push('/tasks');
         if (ws) {
             ws.send(JSON.stringify({ event: 'exit' }));
+            setWs(null);
         }
     };
 
