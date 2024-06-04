@@ -16,8 +16,6 @@ const AuthForm: React.FC = () => {
     const registerUser = useRegisterUser();
     const loginUser = useLoginUser(); //  экземпляр useLoginUser
     
-
-  
     const onRegister = (data: RegisterUserInput ) => {
       if (isRegistering) {
           registerUser.mutate({
@@ -42,7 +40,7 @@ const AuthForm: React.FC = () => {
     });
 }
 
-  const onSubmit = (data: RegisterUserInput) => {
+const onSubmit = (data: RegisterUserInput) => {
     if (isRegistering) {
         onRegister(data);
     } else {

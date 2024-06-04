@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import api from './api/axi';
 import CodeEditorWithValidation from '@/components/CodeEditor';
 import { Modal } from 'antd';
+import givePoints from '@/components/givePoints';
 
 const Competition: React.FC = () => {
     const router = useRouter();
@@ -93,12 +94,13 @@ const Competition: React.FC = () => {
         }
     };
 
-    const handleWin = () => {
+    const handleWin =  () => {
         if (ws) {
             ws.send(JSON.stringify({ event: 'win' }));
-            setOpponentStatus('Победа')
+            setOpponentStatus('Победа');
         }
     };
+    
 
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');

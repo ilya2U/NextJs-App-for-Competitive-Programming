@@ -62,7 +62,7 @@ const Points = () => {
     const currentUserIndex = pointTableData.findIndex((user: any) => user.username === currentName);
 
     return (
-        <div className="p-4 flex flex-col min-h-screen">
+        <div className="p-4 flex flex-col min-h-screen ">
             <div className="flex justify-between items-center mb-4">
                 <h1 className="text-2xl font-bold">
                     <span className="p-3 bg-teal-600 rounded text-white inline-block">Таблица рекордов</span>
@@ -79,7 +79,7 @@ const Points = () => {
             <p className="text-lg mb-4">
                 <span className="p-3 bg-teal-600 text-white rounded inline-block">Твое место: {currentUserIndex + 1}</span>
             </p>
-            <div className="bg-white shadow rounded-lg p-4 flex-grow">
+            <div className="bg-teal-600 shadow rounded-lg p-4 flex-grow">
                 {pointTableData.map((user: any, index: number) => (
                     <div
                         key={user._id}

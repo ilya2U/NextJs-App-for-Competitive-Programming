@@ -18,7 +18,13 @@ const AuthForm: React.FC = () => {
                 avatar: data.avatar,
                 hash: data.hash,
                 username: data.username,
+            },{
+                onError: (error) => {
+                    setErrorMessage('Пользователь с таким именем уже сущетсвует');
+                    console.error('Ошибка авторизации:', error);
+                }
             });
+            setIsRegistering(false)
         }
     };
 

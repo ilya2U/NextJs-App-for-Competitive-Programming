@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import MonacoEditor from '@monaco-editor/react';
+import givePoints from './givePoints';
 
 interface ResultsProps {
     results: [string, string][];
@@ -27,7 +28,7 @@ const CodeEditorWithValidation: React.FC<ResultsProps> = ({ results, onAttempt, 
         editorRef.current = editor;
     };
 
-    const runCode = () => {
+    const runCode =  async () => {
         const editor = editorRef.current;
         if (!editor) return;
         // @ts-ignore
@@ -65,6 +66,11 @@ const CodeEditorWithValidation: React.FC<ResultsProps> = ({ results, onAttempt, 
 
         if (newTestResults.every(result => result)) {
             setResultMessage('Успешно');
+            try {
+                await givePoints();
+            } catch (error) {
+                console.error('Ошибка при начислении очков:', error);
+            }
             onWin();
         } else {
             setResultMessage('Провал');
