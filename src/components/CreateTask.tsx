@@ -7,6 +7,7 @@ import api from '../pages/api/axi';
 function CreateTask() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { handleSubmit, control, reset } = useForm({
+    
     defaultValues: {
       results: [["", ""]],
     },
@@ -72,13 +73,11 @@ function CreateTask() {
     <div>
     <Button
         
-        onClick={() => setIsModalOpen(true)}
-        className="px-4 py-2 bg-teal-600 text-white rounded-xl hover:bg-white hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-teal-500 flex justify-center items-center"
+      onClick={() => setIsModalOpen(true)}
+      className="px-4 py-2 bg-teal-600 text-white rounded-xl hover:bg-white hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-teal-500 flex justify-center items-center"
     >
         Создать задачу
     </Button>
-
-
 
       <Modal
         title="Создать задачу"
@@ -96,6 +95,7 @@ function CreateTask() {
               name="title"
               control={control}
               defaultValue=""
+              rules={{ required: true }}
               render={({ field }) => (
                 // @ts-ignore
                 <input
@@ -115,6 +115,7 @@ function CreateTask() {
              name="description"
               control={control}
               defaultValue=""
+              rules={{ required: true }}
               render={({ field }) => (
                 // @ts-ignore
                 <input
@@ -131,6 +132,7 @@ function CreateTask() {
             name="results"
             control={control}
             defaultValue={[]}
+            rules={{ required: true }}
             render={({ field }) => (
               <div>
                 {field.value.map((result, index) => (

@@ -1,25 +1,43 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import api from '@/pages/api/axi';
 
 const useAuth = () => {
     const router = useRouter();
-    // Инициализируем состояние с типом string | null
     const [accessToken, setAccessToken] = useState<string | null>(null);
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState<any>(null); // Предполагается, что объект пользователя может быть любого типа. Настройте это при необходимости.
 
+    const getUser = async (token: string | null) => {
+        if (token) {
+            try {
+                const response = await api.get('/auth/user', { headers: { 'Authorization': `Bearer ${token}`, 'X-Requested-With': 'XMLHttpRequest' } });
+                return response.data;
+            } catch (error) {
+                console.error('Не удалось получить пользователя:', error);
+                return null;
+            }
+        }
+        return null;
+    };
 
     useEffect(() => {
-        // Получить токен доступа из локального хранилища
-        const token = localStorage.getItem('access_token');
-        setAccessToken(token);
-        if (!token) {
-            router.push('/');
-        }
+        const fetchUser = async () => {
+            const token = localStorage.getItem('access_token');
+            setAccessToken(token);
+            if (!token) {
+                router.push('/');
+            } else {
+                const fetchedUser = await getUser(token);
+                setUser(fetchedUser);
+            }
+        };
+
+        fetchUser();
     }, [router]);
 
-
     return {
-        accessToken
+        accessToken,
+        user
     };
 };
 
